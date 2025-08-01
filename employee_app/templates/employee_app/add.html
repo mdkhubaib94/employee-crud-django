@@ -1,0 +1,14 @@
+{% extends "employee_app/layout.html" %}
+
+{% block body %}
+<div class="form-container">
+  <h1>Add New Employee</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"  class="btn btn--small">Save</button>
+  </form>
+  <br>
+  <a class="btn btn--small"  href="{% url 'index' %}">← Back to Employee List</a>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "employee_app/layout.html" %}
+
+{% block body %}
+<div class="card">
+  <div class="card__header">
+    <div class="card__title">
+      <span class="dot"></span>
+      Employees
+    </div>
+    <div class="toolbar">
+      
+      <a href="{% url 'add' %}" class="btn">➕ Add Employee</a>
+      
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Emp No</th>
+          <th>Name & Email</th>
+          <th>Mobile</th>
+          <th class="right">Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in employees %}
+        <tr>
+          <td class="mono">{{ e.employee_no }}</td>
+
+          <td>
+            <div class="person">
+              <span class="person__name">{{ e.employee_name }}</span>
+              <span class="person__email">{{ e.email_id }}</span>
+            </div>
+          </td>
+
+          <td class="mono">{{ e.mobile_no }}</td>
+
+          <td class="salary mono">
+            ₹ {{ e.salary|floatformat:2 }}
+          </td>
+          <td>
+            <a href="{% url 'update' e.employee_no %}" class="btn btn--small btn--edit">✏️ Edit</a>
+            <a href="{% url 'delete' e.employee_no %}" class="btn btn--small btn--delete">🗑️ Delete</a>
+          </td>
+
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5">
+            <span class="chip">No employees yet</span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card__footer">
+    <div>Total: <strong>{{ employees|length }}</strong> employees</div>
+    
+  </div>
+</div>
+{% endblock %}

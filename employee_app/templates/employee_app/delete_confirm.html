@@ -1,0 +1,13 @@
+{% extends "employee_app/layout.html" %}
+
+{% block body %}
+<div class="form-container">
+  <h1>Confirm Deletion</h1>
+  <p>Are you sure you want to delete <strong>{{ employee.name }}</strong>?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn--delete" style="padding: 8px 20px;">Yes, Delete</button>
+    <a href="{% url 'index' %}" class="btn" style="padding: 8px 20px;">Cancel</a>
+  </form>
+</div>
+{% endblock %}
