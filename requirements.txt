@@ -1,0 +1,5 @@
+Django>=4.0,<5.0
+djangorestframework>=3.12,<4.0
+# If you need SQLite default is built‑in; if you use PostgreSQL or MySQL add:
+# psycopg2-binary>=2.8    # for PostgreSQL
+# mysqlclient>=2.0        # for MySQL
